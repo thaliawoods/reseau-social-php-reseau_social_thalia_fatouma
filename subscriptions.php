@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>ReSoC - Mes abonnements</title> 
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Jeremie Patot">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
@@ -43,7 +43,7 @@
                 // Etape 1: récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
                 // Etape 2: se connecter à la base de donnée
-                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+                include "./connexion.php";
                 // Etape 3: récupérer le nom de l'utilisateur
                 $laQuestionEnSql = "
                     SELECT users.* 

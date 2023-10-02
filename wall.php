@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>ReSoC - Mur</title> 
-        <meta name="author" content="Julien Falconnet">
+        <meta name="author" content="Jeremie Patot">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
@@ -40,7 +40,7 @@
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+            include "./connexion.php";
             ?>
 
             <aside>
