@@ -1,4 +1,9 @@
 <?php
+
+        // TEST THALIA TEST THALIA TEST THALIA
+
+        include "./headersSession.php";
+
     $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                 //verification
         if ($mysqli->connect_error)

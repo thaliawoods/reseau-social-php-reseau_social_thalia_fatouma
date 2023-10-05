@@ -18,7 +18,7 @@
 
 ?>
     
-    <address>par <?php echo $post['author_name'] ?></address>
+    <address> par <a href=<?php echo "wall.php?user_id=".$post['author_id']?><u><?php echo $post['author_name'] ?> </address>
 
 <?php 
 

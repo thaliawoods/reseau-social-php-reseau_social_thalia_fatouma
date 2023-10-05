@@ -44,6 +44,11 @@
                 <?php
 
 
+        // TEST THALIA TEST THALIA TEST THALIA
+
+        include "./headersSession.php";
+
+
                 // Etape 1: récupérer l'id de l'utilisateur
 
                 $userId = intval($_GET['user_id']);
@@ -76,7 +81,7 @@
                 <article>
 
                     <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $post['alias']?></h3>
+                    <h3> <a href=<?php echo "wall.php?user_id=".$post['id']?>>Mur</a> <?php echo $post['alias']?></h3>
                     <p>Id:<?php echo $post['id']?></p>     
 
                 </article>
