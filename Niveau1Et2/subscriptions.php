@@ -37,7 +37,7 @@ session_start();
             <p>Sur cette page, vous trouverez la liste des personnes que l'utilisatrice suit les messages.</p>
         </section>
         <form action="subscribe.php" method="post">
-    <input type="hidden" name="followed_user_id" value="<?php echo $userId; ?>">
+    <input type="hidden" name="target_user_id" value="<?php echo $userId; ?>">
     <input type="submit" value="S'abonner">
 </form>
 
