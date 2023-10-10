@@ -48,4 +48,6 @@ if ($checkSubscriptionResult && $checkSubscriptionResult->num_rows > 0) {
 
 // Fermez la connexion à la base de données si nécessaire
 $mysqli->close();
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 ?>

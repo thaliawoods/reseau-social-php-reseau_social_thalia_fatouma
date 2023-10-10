@@ -17,7 +17,7 @@
             <a href=<?php echo "wall.php?user_id=".$_SESSION['connected_id']?>>Mur</a>
             <a href=<?php echo "feed.php?user_id=".$_SESSION['connected_id']?>>Flux</a>
             <a href=<?php echo "tags.php?tag_id=".$_SESSION['connected_id']?>>Mots-clés</a>
-            <a href="follow.php?followedid=<?php echo $userId;?>">Suivre cette personne</a>
+            <!-- <a href="follow.php?followedid=<?php echo $userId;?>">Suivre cette personne</a> -->
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
@@ -70,10 +70,10 @@
                     echo "<a href='newpost.php'><button id='newpost'>
                         Nouveau post !
                     </button></a>";
-                } else {
-                    echo "<a href='subscriptions.php'><button id='newpost'>
-                                S'abonner
-                            </button></a>";
+                // } else {
+                //     echo "<a href='subscriptions.php'><button id='newpost'>
+                //                 S'abonner
+                //             </button></a>";
                 } ?>
                 <br /><br />
                 <?php if (isset($_SESSION['connected_id']) && $_SESSION['connected_id'] != $userId) {
@@ -81,8 +81,8 @@
                     $isfollowingornot->bind_param('ii', $getfollowedid, $_SESSION['connected_id']);
                     $isfollowingornot->execute();
                     $isfollowingornot->close(); // Libérer les résultats de la requête préparée
-                ?>
-                    <a href="follow.php?followedid=<?php echo $userId; ?>">Suivre cette personne</a>
+                // ?>
+                <!-- //     <a href="follow.php?followedid=<?php echo $userId; ?>">Suivre cette personne</a> -->
                 <?php } ?>
             </section>
             <!-- <form action="subscribe.php" method="post">
