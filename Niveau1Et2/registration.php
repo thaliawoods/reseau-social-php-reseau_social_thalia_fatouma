@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -49,7 +50,7 @@
 
                         $new_email = $_POST['email'];
                         $new_alias = $_POST['pseudo'];
-                        $new_passwd = $_POST['motdepasse'];
+                        $new_passwd = $_POST['motpasse'];
 
 
                         //Etape 3 : Ouvrir une connexion avec la base de donnée.
@@ -92,6 +93,7 @@
                             echo " <a href='login.php'>Connectez-vous.</a>";
                         }
                     }
+                    
                     ?>    
                     
                     

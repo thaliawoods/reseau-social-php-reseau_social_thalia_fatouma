@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -35,6 +36,11 @@
                         n° <?php echo intval($_GET['user_id']) ?></p>
 
                 </section>
+                <form action="subscribe.php" method="post">
+                <input type="hidden" name="followed_user_id" value="<?php echo $userId; ?>">
+                 <input type="submit" value="S'abonner">
+                </form>
+
             </aside>
 
             <main class='contacts'>
@@ -44,6 +50,8 @@
 
                 // Etape 1: récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
+
+                
 
 
                 // Etape 2: se connecter à la base de donnée

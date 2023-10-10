@@ -1,5 +1,5 @@
-<!doctype html>
 <?php session_start(); ?>
+<!doctype html>
 <html lang="fr">
 
 <head>
@@ -11,20 +11,21 @@
 
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
-        <nav id="menu">
+    <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+            <nav id="menu">
             <a href="news.php">Actualités</a>
-            <a href="wall.php?user_id=5">Mur</a>
-            <a href="feed.php?user_id=5">Flux</a>
-            <a href="tags.php?tag_id=1">Mots-clés</a>
-        </nav>
-        <nav id="user">
-            <a href="#">Profil</a>
-            <ul>
-                <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
-            </ul>
+                <a href=<?php echo "wall.php?user_id=".$_SESSION['connected_id']?>>Mur</a>
+                <a href=<?php echo "feed.php?user_id=".$_SESSION['connected_id']?>>Flux</a>
+                <a href=<?php echo "tags.php?tag_id=".$_SESSION['connected_id']?>>Mots-clés</a>
+            </nav>
+            <nav id="user">
+                <a href="#">Profil</a>
+                <ul>
+                    <li><a href=<?php echo "settings.php?user_id=".$_SESSION['connected_id']?>>Paramètres</a></li>
+                    <li><a href=<?php echo "followers.php?user_id=".$_SESSION['connected_id']?>>Mes suiveurs</a></li>
+                    <li><a href=<?php echo "subscriptions.php?user_id=".$_SESSION['connected_id']?>>Mes abonnements</a></li>
+                </ul>
+            </nav>
         </nav>
     </header>
 
@@ -41,7 +42,7 @@
          * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
          */
 
-        $userId = intval($_GET['user_id']);
+        $userId =intval($_GET['user_id']);
 
         ?>
 
@@ -76,78 +77,51 @@
 
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez tous les message de l'utilisatrice :
-                    <?php echo $user['alias'] ?>
-                    (n°
-                    <?php echo $userId ?>)
-                </p>
-            </section>
+            <h3>Présentation</h3>
+            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
+                        (n° <?php echo $userId ?>)
+                    </p>
+                    <?php  if (intval($_GET['user_id'])==$_SESSION['connected_id']){ 
+                    echo "<a href='newpost.php'><button id='newpost'>
+                        Nouveau post !
+                    </button></a>";}
+                            else {
+                                echo "<a href='subscriptions.php'><button id='newpost'>
+                                S'abonner
+                            </button></a>";
+                            } ?>
+                            <br /><br />
+                            <?php if(isset($_SESSION['connected_id']) AND $_SESSION['connected_id'] != $userId ){
+                                $isfollowingornot = $mysqli->prepare('SELECT * FROM followers WHERE followed_user_id = ? AND following_user_id = ?');
+                                $isfollowingornot->bind_param('ii', $getfollowedid, $_SESSION['connected_id']);
+                                $isfollowingornot->execute();
+                                ?>
+                            <a href="follow.php?followedid=<?php echo $userId;?>">Suivre cette personne</a>
+                            <?php } ?>
+                </section>
+                <form action="subscribe.php" method="post">
+    <input type="hidden" name="author_id" value="<?php echo $userId; ?>">
+    <input type="submit" value="S'abonner">
+</form>
+  <!-- ... Affichage des détails de l'utilisateur ... -->
+
+  <?php
+    // Affiche le formulaire d'abonnement si l'utilisateur n'est pas lui-même l'auteur du mur
+    if ($_SESSION['connected_id'] != $userId) {
+        echo '<form action="subscriptions.php" method="post">';
+        echo '<input type="hidden" name="author_id" value="' . $userId . '">';
+        echo '<input type="submit" value="S\'abonner">';
+        echo '</form>';
+    }
+    ?>
+
         </aside>
 
 
-        <main>
+            <main>
+            
 
             <?php
-            $pageUserId = intval($_GET['user_id']);
-            $sessionId = $_SESSION['connected_id'];
-
-            if ($pageUserId == $sessionId)
-            {
-
-            $enCoursDeTraitement = isset($_POST['post']);
-            if ($enCoursDeTraitement) {
-
-                $postContent = $_POST['post'];
-                $user_id = $_SESSION['connected_id'];
-
-
-                //Etape 3 : Ouvrir une connexion avec la base de donnée.
-            
-                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
-
-                $postContent = $mysqli->real_escape_string($postContent);
-                $user_id = $mysqli->real_escape_string($user_id);
-
-                //Etape 5 : construction de la requete
-                $lInstructionSql = "INSERT INTO posts (id, user_id, content, created, parent_id) "
-                    . "VALUES (NULL, "
-                    . "'" . $user_id . "', "
-                    . "'" . $postContent . "', "
-                    . "NOW(),"
-                    . "NULL"
-                    . ");";
-
-
-                // Etape 6: exécution de la requete
-            
-                $ok = $mysqli->query($lInstructionSql);
-                if (!$ok) {
-                    echo "Le post n'a pas été enregistré : " . $mysqli->error;
-                } else {
-                    echo "Le post a bien été enregistré " ;
-                }
-            }
-
-            ?>
-
-            <article>
-
-                <form action="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?> " method="post">
-                    <input type='hidden' name='???' value='achanger'>
-                    <dl>
-                        <dt><label for='post'>Post</label></dt>
-                        <dd><input type='post' name='post'></dd>
-                    </dl>
-                    <input type='submit'>
-                </form>
-
-            </article>
-
-            <?php
-
-            }
-
 
             /**
              * Etape 3: récupérer tous les messages de l'utilisatrice
