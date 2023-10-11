@@ -32,11 +32,12 @@
         </p>
     </div>
     <footer>
-        <small>♥ <?php 
+        <small>
+            <a href=<?= "like.php?id=" . $post['post_id']; ?> style="text-decoration: none;">♥ <?php echo $post['like_number']; ?></a> <?php 
         
         //Nombre de like sur le post
 
-         echo $post['like_number'] ?>
+         ?>
         </small>
         <?php
 

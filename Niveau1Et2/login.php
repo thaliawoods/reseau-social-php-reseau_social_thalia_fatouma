@@ -13,7 +13,6 @@ session_start();
         <header>
 
            <?php include "header.php" ?>
-
         </header>
 
         <div id="wrapper" >

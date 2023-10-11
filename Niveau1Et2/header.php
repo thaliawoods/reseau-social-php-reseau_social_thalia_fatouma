@@ -3,7 +3,7 @@
                 <a href=<?php echo 'news.php';?>>Actualités</a>
                 <a href=<?php echo 'wall.php?user_id='.$_SESSION['connected_id']; ?>>Mur</a>
                 <a href=<?php echo 'feed.php?user_id='.$_SESSION['connected_id']; ?>>Flux</a>
-                <a href="http://localhost/php-social-network-eden-louis-guillaume/resoc_n1/tags.php?tag_id=1">Mots-clés</a>
+                <a href="http://localhost/php-social-network-eden-louis-guillaume/Niveau1Et2/tags.php?tag_id=1">Mots-clés</a>
             </nav>
             <nav id="user">
                 <a href="#">Profil</a>
