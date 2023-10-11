@@ -24,6 +24,7 @@
                 <li><a href=<?php echo "settings.php?user_id=" . $_SESSION['connected_id'] ?>>Paramètres</a></li>
                 <li><a href=<?php echo "followers.php?user_id=" . $_SESSION['connected_id'] ?>>Mes suiveurs</a></li>
                 <li><a href=<?php echo "subscriptions.php?user_id=" . $_SESSION['connected_id'] ?>>Mes abonnements</a></li>
+                <li><a href=<?php echo "deconnexion.php?user_id=".$_SESSION['connected_id']?>>Déconnexion</a></li>
             </ul>
         </nav>
     </header>
