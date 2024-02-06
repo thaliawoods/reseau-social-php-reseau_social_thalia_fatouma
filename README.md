@@ -1,10 +1,21 @@
-# reseau-social-php-reseau_social_fatouma
-reseau-social-php-reseau_social_fatouma_nicolas_thalia created by GitHub Classroom
-# Nom du Projet de Blog en PHP
+# Réseau Social PHP
 
-## Description
 
 Ce projet de blog en PHP offre une plateforme simple et extensible pour la publication de contenus. Il utilise une base de données MySQL gérée via phpMyAdmin pour stocker les articles, les commentaires et d'autres informations liées au blog.
+
+
+## Objectifs
+
+• Faire un site web dynamique qui construit les pages HTML à la demande grâce à une base de donnée.
+• Enrichir ce site de nouveaux contenus fournis par les utilisateurs avec des formulaires.
+• Gérer les authentifications (login),sessions, autorisations (droits d’accès) et inscriptions.
+• Avoir un premier aperçu de : la conception web, de la conception base de donnée, des problématiques d’un projet multi-langages.
+
+
+## Groupe de 2 personnes - 6 jours
+
+Fatouma F - Thalia WOODS 
+
 
 ## Fonctionnalités
 
@@ -16,12 +27,14 @@ Ce projet de blog en PHP offre une plateforme simple et extensible pour la publi
 
 - **Gestion de la Base de Données :** Les données du blog, y compris les articles, les commentaires et les informations des utilisateurs, sont stockées dans une base de données MySQL gérée via phpMyAdmin.
 
+
 ## Installation
 
 
 . Importez la structure de la base de données à l'aide du fichier SQL fourni dans le dossier `database`.
 
 . Configurez les paramètres de connexion à la base de données dans le fichier `config.php`.
+
 
 ## Utilisation
 
@@ -30,6 +43,7 @@ Ce projet de blog en PHP offre une plateforme simple et extensible pour la publi
 2. Créez un compte utilisateur ou utilisez les identifiants par défaut fournis dans le fichier `config.php`.
 
 3. Commencez à publier des articles et à interagir avec les commentaires.
+   
 
 ## Structure du Projet
 
@@ -41,6 +55,7 @@ Ce projet de blog en PHP offre une plateforme simple et extensible pour la publi
 
 - **`database/` :** Scripts SQL pour la création de la base de données.
 
+
 ## Configuration de phpMyAdmin
 
 1. Accédez à phpMyAdmin via votre navigateur.
@@ -48,5 +63,13 @@ Ce projet de blog en PHP offre une plateforme simple et extensible pour la publi
 2. Créez une nouvelle base de données et importez la structure à partir du fichier SQL fourni.
 
 3. Mettez à jour les informations de connexion à la base de données dans le fichier `config.php`.
+
+
+## Aperçu du projet
+
+( mettre screen )
+
+
+## Lancement du projet
 
 
